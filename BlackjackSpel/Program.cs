@@ -168,13 +168,9 @@ namespace BlackjackSpel
                     foreach (var player in players)
                     {
                         int playerTotalCardsValue = player.TotalCardsValue();
-                        //"Tjocka" spelare räknas inte med så den närmsta spelaren byts ut.
-                        if (playerTotalCardsValue > 21)
-                        {
-                            closestTo21 = player;
-                        }
+                        //"Tjocka" spelare räknas inte med.
                         //Spelar som jämförs får inte vara den samma.
-                        else if (player != closestTo21)
+                        if (playerTotalCardsValue <= 21 && player != closestTo21)
                         {
                             //Spelaren med minst skillnad i differens ifrån 21 blir närmast.
                             int playerValueDifference = 21 - playerTotalCardsValue;
